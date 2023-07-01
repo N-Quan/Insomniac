@@ -10,7 +10,7 @@ def InsomniacUI():
     ]
     window = gui.Window('Insomniac', layout)
     
-    volume_toggle_process = multiprocessing.Process(target = volume_toggle_process)
+    volume_toggle_process = multiprocessing.Process(target = keep_alive)
     volume_toggle_process.start()
     
     while True:
@@ -20,7 +20,7 @@ def InsomniacUI():
                 volume_toggle_process.terminate()
             break
 
-def volume_toggle_process():
+def keep_alive():
     while True:
         pyautogui.press('volumedown')
         time.sleep(1)
